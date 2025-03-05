@@ -24,13 +24,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Install Swift
-      uses: slashmo/install-swift@v0.4.0
-      with:
-        version: swift-DEVELOPMENT-SNAPSHOT-2024-04-13-a
+    - name: Install swift-DEVELOPMENT-SNAPSHOT-2024-12-04-a
+      run: |
+          wget -q https://download.swift.org/development/ubuntu2404/swift-DEVELOPMENT-SNAPSHOT-2024-12-04-a/swift-DEVELOPMENT-SNAPSHOT-2024-12-04-a-ubuntu24.04.tar.gz
+          tar xzf swift-DEVELOPMENT-SNAPSHOT-2024-12-04-a-ubuntu24.04.tar.gz
+          export PATH="`pwd`/swift-DEVELOPMENT-SNAPSHOT-2024-12-04-a-ubuntu24.04/usr/bin/:$PATH"
+          echo "PATH=$PATH" >> $GITHUB_ENV
+          which swiftc
+          swiftc --version
 
-    - name: Test Swift Install
-      run: swift --version
+    # - name: Test Swift Install
+    #   run: swift --version
 
     - name: Install GCC, GNU Embedded Toolchain for ARM, Ninja
       run: sudo apt install gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential g++ libstdc++-arm-none-eabi-newlib ninja-build
