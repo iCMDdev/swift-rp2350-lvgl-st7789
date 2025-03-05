@@ -1,8 +1,8 @@
 name: Daily check for SDK updates
 
-on:
-  schedule:
-    - cron: '0 13 * * *'
+# on:
+  # schedule:
+    # - cron: '0 13 * * *'
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
