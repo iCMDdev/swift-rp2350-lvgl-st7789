@@ -33,7 +33,7 @@ jobs:
         echo "latest_picosdk_version=$LATEST_PICOSDK_VERSION" >> $GITHUB_ENV
     
     - name: Check Pico SDK cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: pico-sdk
         key: picosdk-${{env.latest_picosdk_version}}
